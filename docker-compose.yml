@@ -1,0 +1,26 @@
+version: "2"
+services:
+  rosso_ws_web:
+    build: ./docker/web
+    container_name: rosso_ws_web
+    ports:
+      - "32776:80"
+    depends_on:
+      - rosso_ws_db
+    links:
+      - rosso_ws_db
+    volumes:
+      - ./rosso_ws:/var/www/rosso_ws
+
+  rosso_ws_db:
+    build: ./docker/db
+    container_name: rosso_ws_db
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: rosso_ws
+      MYSQL_HOST: "localhost"
+    ports:
+      - 3306:3306
+    expose:
+      - 3306

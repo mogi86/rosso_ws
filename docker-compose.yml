@@ -11,6 +11,7 @@ services:
       - rosso_ws_db
     volumes:
       - ./rosso_ws:/var/www/rosso_ws
+    tty: true
 
   rosso_ws_db:
     build: ./docker/db

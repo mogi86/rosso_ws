@@ -8,8 +8,6 @@ RUN yum -y install git zip unzip
 RUN yum -y install httpd
 
 # php install & setup
-# RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-# RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN yum -y install --disablerepo=amzn-main --enablerepo=epel libwebp
 RUN yum -y install libmcrypt \
@@ -42,6 +40,3 @@ RUN cp /usr/share/zoneinfo/Japan /etc/localtime
 
 # copy httpd.conf
 COPY ./httpd.conf /etc/httpd/conf.d/httpd.conf
-
-EXPOSE 80
-CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]

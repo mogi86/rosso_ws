@@ -35,9 +35,10 @@ $ cp .env.example .env
 $ composer install
 $ php artisan key:generate
 $ php artisan cache:clear
+$ php artisan migrate
 ```
 
-## laravel migrate
+## apacha restart
 
 - ホストPCからrosso_ws_webコンテナ内へ入る
 
@@ -49,6 +50,5 @@ $ docker exec -it rosso_ws_web /bin/bash
 - rosso_ws_webコンテナ内で実行
 
 ```
-$ cd /var/www/rosso_ws
-$ php artisan migrate
+$ service httpd restart
 ```

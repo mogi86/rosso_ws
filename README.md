@@ -38,7 +38,7 @@ $ php artisan cache:clear
 $ php artisan migrate
 ```
 
-## apacha restart
+## apache restart
 
 - ホストPCからrosso_ws_webコンテナ内へ入る
 

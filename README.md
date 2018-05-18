@@ -1,6 +1,21 @@
 # rosso_ws
 docker-laravel-apache
 
+
+# ディレクトリ構成説明
+
+```
+例）
+|-docker : docker関連のファイルを格納
+| |-db : DBのコンテナ作成用
+| |-web : アプリのコンテナ作成用
+|
+|-rosso_ws : Laravelのソースコード
+|-docker-compose.yml
+```
+
+# アプリ構築手順
+
 ## git clone
 
 ```

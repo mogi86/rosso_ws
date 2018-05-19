@@ -67,18 +67,3 @@ $ docker exec -it rosso_ws_web /bin/bash
 ```
 $ service httpd restart
 ```
-
-Laravelのセットアップ手順含め、
-ansibleでやっていただきたいことをまとめました。
-
-また、ローカルでdockerを使いながらローカル環境構築したので、
-そのソースをgithubにあげています。
-https://github.com/mogi86/rosso_ws
-
-docker-composeでビルドする際にApache・MySQL等のミドルウェアを入れるようになっています。
-コンテナ作成後に、READMEに記載されている手順でLaravelのセットアップをして画面表示されます。
-playbook作成する際の参考になればと思います。
-
-課題としてはデプロイ方法を決めないとですね。
-ansibleでgit cloneするか、
-小田島さんやられてたみたいに圧縮ファイルを配布・展開とかですかね。

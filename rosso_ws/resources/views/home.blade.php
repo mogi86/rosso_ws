@@ -7,7 +7,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">メニュー</div>
                 <ul class="list-group">
-                    <a href="#wells" class="list-group-item">商品一覧</a>
+                    <a href="{{ route('product::index') }}" class="list-group-item">商品一覧</a>
                     <a href="#wells" class="list-group-item">商品登録</a>
                 </ul>
             </div>

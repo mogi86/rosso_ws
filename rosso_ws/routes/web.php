@@ -16,3 +16,9 @@ Route::redirect('/', '/home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth')->group(function () {
+    Route::name('product::')->prefix('product')->group(function () {
+        Route::get('/', 'ProductController@index')->name('index');
+    });
+});

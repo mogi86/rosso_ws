@@ -2,17 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+    /**
+     * @var ProductService
+     */
+    private $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     /**
      * 商品一覧画面表示
      */
     public function index()
     {
-        return view('product.index');
+        $productList = $this->productService->getProductList();
+        $data = [
+            'productList' => $productList,
+        ];
+
+        return view('product.index', $data);
     }
 
     /**

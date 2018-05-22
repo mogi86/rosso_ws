@@ -26,9 +26,29 @@ class ProductEntity
      *
      * @return string 商品名
      */
-    public function getNmae(): string
+    public function getName(): string
     {
-        return $this->record->naem;
+        return $this->record->name;
+    }
+
+    /**
+     * ジャンルを返す
+     *
+     * @return string ジャンル
+     */
+    public function getGenre(): string
+    {
+        return $this->record->genre;
+    }
+
+    /**
+     * 値段を返す
+     *
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->record->price;
     }
 
     /**

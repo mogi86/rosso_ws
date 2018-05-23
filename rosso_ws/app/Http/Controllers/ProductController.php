@@ -38,11 +38,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 商品新規登録
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

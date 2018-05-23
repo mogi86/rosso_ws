@@ -20,5 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->group(function () {
     Route::name('product::')->prefix('product')->group(function () {
         Route::get('/', 'ProductController@index')->name('index');
+        Route::get('/create', 'ProductController@create')->name('create');
+        Route::post('/store', 'ProductController@store')->name('store');
     });
 });

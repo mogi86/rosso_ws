@@ -41,13 +41,26 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                                <label for="password-confirm" class="col-md-4 control-label">値段</label>
+                                <label for="price" class="col-md-4 control-label">値段</label>
                                 <div class="col-md-6">
                                     <input id="price" type="number" class="form-control" name="price" required>
 
                                     @if ($errors->has('price'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                <label for="description" class="col-md-4 control-label">概要</label>
+                                <div class="col-md-6">
+                                    <textarea id="description" class="form-control" rows="5" name="description"></textarea>
+
+                                    @if ($errors->has('description'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
                                     </span>
                                     @endif
                                 </div>

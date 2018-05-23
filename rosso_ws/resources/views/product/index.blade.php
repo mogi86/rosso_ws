@@ -18,6 +18,7 @@
                                 {{ Session::get('error') }}
                             </div>
                         @endif
+                        <a class="btn btn-primary" href="{{ route('product::create') }}" role="button">新規登録</a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>

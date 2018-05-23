@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
+use Exception;
 
 class ProductController extends Controller
 {
@@ -49,7 +50,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $records = [
+            'name'        => $request->input('name', ''),
+            'genre'       => $request->input('genre', ''),
+            'price'       => $request->input('price', ''),
+            'description' => $request->input('description', ''),
+        ];
+
+        try {
+            $this->productService->storeProduct($records);
+            $request->session()->flash('info', '商品を登録しました。');
+        } catch (Exception $e) {
+            $request->session()->flash('error', '登録に失敗しました。');
+        }
+        return redirect(route('product::index'));
     }
 
     /**

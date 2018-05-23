@@ -7,6 +7,17 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">商品一覧</div>
                     <div class="panel-body">
+                        @if (Session::has('info'))
+                            <div class="alert alert-success">
+                                <a class="close" data-dismiss="alert">×</a>
+                                {{ Session::get('info') }}
+                            </div>
+                        @elseif (Session::has('error'))
+                            <div class="alert alert-danger">
+                                <a class="close" data-dismiss="alert">×</a>
+                                {{ Session::get('error') }}
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>

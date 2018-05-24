@@ -45,7 +45,7 @@ class ProductController extends Controller
     /**
      * 商品新規登録
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -78,26 +78,54 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 商品情報編集
      *
-     * @param  \App\Product  $product
+     * @param  Request  $request
+     * @param  int      $id      商品ID
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Request $request, int $id)
     {
-        //
+        $entity = $this->productService->getProductById($id);
+
+        if (is_null($entity)) {
+            $request->session()->flash('error', '予期せぬエラーが発生しました。');
+            redirect(route('product::index'));
+        }
+
+        $data = [
+            'productEntity' => $entity,
+        ];
+
+        return view('product.edit', $data);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 商品情報更新
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  Request  $request
+     * @param  int      $id      商品ID
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, int $id)
     {
-        //
+        $records = [
+            'id'          => $id,
+            'name'        => $request->input('name', ''),
+            'genre'       => $request->input('genre', ''),
+            'price'       => $request->input('price', ''),
+            'description' => $request->input('description', ''),
+        ];
+
+        //更新
+        try {
+            $this->productService->updateProduct($records);
+        } catch (Exception $e) {
+            $request->session()->flash('error', '予期せぬエラーが発生しました。');
+            redirect(route('product::index'));
+        }
+        $request->session()->flash('info', '商品を更新しました。');
+        return redirect(route('product::index'));
     }
 
     /**

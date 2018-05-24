@@ -48,4 +48,21 @@ class ProductRepository
                 return new ProductEntity($record);
             });
     }
+
+    /**
+     * IDをキーとして商品を取得
+     *
+     * @param int $id
+     * @return ProductEntity
+     */
+    public function getProductById(int $id): ?ProductEntity
+    {
+        $record = Product::find($id);
+
+        if (is_null($record)) {
+            return null;
+        }
+
+        return new ProductEntity($record);
+    }
 }

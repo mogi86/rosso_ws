@@ -26,6 +26,7 @@
                                     <th>商品名</th>
                                     <th>ジャンル</th>
                                     <th>値段</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -34,6 +35,9 @@
                                         <td>{{ $product->getName() }}</td>
                                         <td>{{ $product->getGenre() }}</td>
                                         <td>{{ $product->getPrice() }}</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="{{ route('product::edit', ['id' => $product->getId()]) }}" role="button">編集</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

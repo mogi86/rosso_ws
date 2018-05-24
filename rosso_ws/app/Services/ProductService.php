@@ -50,4 +50,37 @@ class ProductService
             throw $e;
         }
     }
+
+    /**
+     * IDをキーとして商品を取得
+     *
+     * @param int $id
+     * @return ProductEntity
+     */
+    public function getProductById(int $id): ?ProductEntity
+    {
+        $entity = $this->productRepository->getProductById($id);
+
+        if (is_null($entity)) {
+            return null;
+        }
+        return $entity;
+    }
+
+    /**
+     * 商品情報更新
+     *
+     * @param  array $records
+     * @throws Exception
+     */
+    public function updateProduct(array $records)
+    {
+        $entity = $this->getProductById($records['id']);
+        $entity->setName($records['name']);
+        $entity->setGenre($records['genre']);
+        $entity->setPrice($records['price']);
+        $entity->setDescription($records['description']);
+
+        $this->productRepository->persist($entity);
+    }
 }

@@ -22,5 +22,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', 'ProductController@index')->name('index');
         Route::get('/create', 'ProductController@create')->name('create');
         Route::post('/store', 'ProductController@store')->name('store');
+        Route::get('/edit/{id}', 'ProductController@edit')->name('edit');
+        Route::post('/update/{id}', 'ProductController@update')->name('update');
     });
 });

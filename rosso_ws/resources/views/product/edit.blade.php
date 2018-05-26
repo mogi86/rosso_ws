@@ -80,11 +80,17 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        更新
-                                    </button>
+                                    <div class="btn-toolbar" role="toolbar">
+                                        <div class="btn-group" role="group">
+                                            <button type="submit" class="btn btn-success">
+                                                更新
+                                            </button>
+                                            <a class="btn btn-primary" href="{{ route('product::index') }}" role="button">戻る</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                         </form>
                     </div>
 

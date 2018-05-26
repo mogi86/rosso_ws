@@ -18,8 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->string('genre');
             $table->unsignedInteger('price');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

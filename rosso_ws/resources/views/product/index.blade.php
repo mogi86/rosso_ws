@@ -27,6 +27,7 @@
                                     <th>ジャンル</th>
                                     <th>値段</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -36,7 +37,16 @@
                                         <td>{{ $product->getGenre() }}</td>
                                         <td>{{ $product->getPrice() }}</td>
                                         <td>
-                                            <a class="btn btn-primary" href="{{ route('product::edit', ['id' => $product->getId()]) }}" role="button">編集</a>
+                                            <a class="btn btn-success" href="{{ route('product::edit', ['id' => $product->getId()]) }}" role="button">編集</a>
+                                        </td>
+                                        <td>
+                                            <form class="form-horizontal" method="POST" action="{{ route('product::destroy', ['id' => $product->getId()]) }}">
+                                                {{ csrf_field() }}
+                                                <input name="_method" type="hidden" value="DELETE">
+                                                <button type="submit" class="btn btn-danger">
+                                                    削除
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

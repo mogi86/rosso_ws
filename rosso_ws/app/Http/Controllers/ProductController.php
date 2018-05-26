@@ -129,13 +129,21 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 商品削除
      *
-     * @param  \App\Product  $product
+     * @param  Request  $request
+     * @param  int      $id      商品ID
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, int $id)
     {
-        //
+        $result = $this->productService->deleteProduct($id);
+
+        if ($result) {
+            $request->session()->flash('info', '商品を削除しました。');
+        } else {
+            $request->session()->flash('error', '商品の削除に失敗しました。');
+        }
+        return redirect(route('product::index'));
     }
 }

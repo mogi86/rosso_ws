@@ -83,4 +83,15 @@ class ProductService
 
         $this->productRepository->persist($entity);
     }
+
+    /**
+     * IDに紐づく商品を削除する
+     *
+     * @param int $id 商品ID
+     * @return boolean
+     */
+    public function deleteProduct(int $id): bool
+    {
+        return $this->productRepository->softDeleteById($id);
+    }
 }

@@ -65,4 +65,20 @@ class ProductRepository
 
         return new ProductEntity($record);
     }
+
+    /**
+     * IDをキーとして論理削除
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function softDeleteById(int $id): bool
+    {
+        $record = Product::find($id);
+
+        if (is_null($record)) {
+            return false;
+        }
+        return (bool)$record->delete();
+    }
 }

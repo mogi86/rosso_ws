@@ -24,5 +24,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'ProductController@store')->name('store');
         Route::get('/edit/{id}', 'ProductController@edit')->name('edit');
         Route::post('/update/{id}', 'ProductController@update')->name('update');
+        Route::delete('/destroy/{id}', 'ProductController@destroy')->name('destroy');
     });
 });
